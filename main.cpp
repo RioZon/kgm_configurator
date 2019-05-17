@@ -12,11 +12,11 @@ using std::cout;
 using std::endl;
 
 /**
-* \brief Парсинг командной строки.
-* @param begin --- итератор на начало списка параметров;
-* @param end --- итератор на конец списка параметров;
-* @param option --- параметр для поиска;
-* \return Параметр или исключение.
+* \brief п÷п╟я─я│п╦п╫пЁ п╨п╬п╪п╟п╫п╢п╫п╬п╧ я│я┌я─п╬п╨п╦.
+* @param begin --- п╦я┌п╣я─п╟я┌п╬я─ п╫п╟ п╫п╟я┤п╟п╩п╬ я│п©п╦я│п╨п╟ п©п╟я─п╟п╪п╣я┌я─п╬п╡;
+* @param end --- п╦я┌п╣я─п╟я┌п╬я─ п╫п╟ п╨п╬п╫п╣я├ я│п©п╦я│п╨п╟ п©п╟я─п╟п╪п╣я┌я─п╬п╡;
+* @param option --- п©п╟я─п╟п╪п╣я┌я─ п╢п╩я▐ п©п╬п╦я│п╨п╟;
+* \return п÷п╟я─п╟п╪п╣я┌я─ п╦п╩п╦ п╦я│п╨п╩я▌я┤п╣п╫п╦п╣.
 */
 char* getCmdOption(char ** begin, char ** end, const string & option)
 {
@@ -25,13 +25,13 @@ char* getCmdOption(char ** begin, char ** end, const string & option)
     {
         return *itr;
     }
-    throw std::runtime_error("Параметр "+option+" не найден");
+    throw std::runtime_error("п÷п╟я─п╟п╪п╣я┌я─ "+option+" п╫п╣ п╫п╟п╧п╢п╣п╫");
 }
 
 /**
-* \brief Логирование информации в поток out.
-* @param message --- сообщение для логирования;
-* @param isRepeatable --- флаг для игнорирования одинаковых сообщений;
+* \brief п⌡п╬пЁп╦я─п╬п╡п╟п╫п╦п╣ п╦п╫я└п╬я─п╪п╟я├п╦п╦ п╡ п©п╬я┌п╬п╨ out.
+* @param message --- я│п╬п╬п╠я┴п╣п╫п╦п╣ п╢п╩я▐ п╩п╬пЁп╦я─п╬п╡п╟п╫п╦я▐;
+* @param isRepeatable --- я└п╩п╟пЁ п╢п╩я▐ п╦пЁп╫п╬я─п╦я─п╬п╡п╟п╫п╦я▐ п╬п╢п╦п╫п╟п╨п╬п╡я▀я┘ я│п╬п╬п╠я┴п╣п╫п╦п╧;
 */
 void log(string const & message, bool isRepeatable = false)
 {
@@ -74,12 +74,12 @@ int main(int argc, char *argv[])
     signal(SIGINT, stopRunning);
     signal(SIGQUIT, stopRunning);
 
-    log("Запущена система управления конфигурацией kgm_conf");
+    log("п≈п╟п©я┐я┴п╣п╫п╟ я│п╦я│я┌п╣п╪п╟ я┐п©я─п╟п╡п╩п╣п╫п╦я▐ п╨п╬п╫я└п╦пЁя┐я─п╟я├п╦п╣п╧ kgm_conf");
     if (argc != 7)
     {
-        cout<< "    Использование:"<<endl;
-        cout<< argv[0] <<" -h хост -p порт -f файл" << endl;
-        cout<< "    Например:"<<endl;
+        cout<< "    п≤я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦п╣:"<<endl;
+        cout<< argv[0] <<" -h я┘п╬я│я┌ -p п©п╬я─я┌ -f я└п╟п╧п╩" << endl;
+        cout<< "    п²п╟п©я─п╦п╪п╣я─:"<<endl;
         cout<< argv[0] <<" -h 192.168.0.2 -p 4803 -f spv" << endl;
         return -1;
     }
@@ -115,7 +115,7 @@ int main(int argc, char *argv[])
         {
             try {
                 Sp_Connect::Connect(spr_name.c_str());
-                log("Соединение со spread установлено");
+                log("п║п╬п╣п╢п╦п╫п╣п╫п╦п╣ я│п╬ spread я┐я│я┌п╟п╫п╬п╡п╩п╣п╫п╬");
             } catch(std::exception &ex) {
                 log(ex.what(),true);
                 usleep(1000000); // sleep 1 sec
@@ -126,11 +126,11 @@ int main(int argc, char *argv[])
         {
             int ret=SP_receive(Sp_Connect::id,&service_type,sender,10,&num_groups,
                            target_groups,&mess_type,&endian_mismatch,size,buf);
-            if(ret==BUFFER_TOO_SHORT) /*пришло более мегабайта данных*/
-                std::cerr << "Буфер переполнен"<< endl;
+            if(ret==BUFFER_TOO_SHORT) /*п©я─п╦я┬п╩п╬ п╠п╬п╩п╣п╣ п╪п╣пЁп╟п╠п╟п╧я┌п╟ п╢п╟п╫п╫я▀я┘*/
+                std::cerr << "п▒я┐я└п╣я─ п©п╣я─п╣п©п╬п╩п╫п╣п╫"<< endl;
             else if (ret < 0)
             {
-                log("Потеряно соединение со spread");
+                log("п÷п╬я┌п╣я─я▐п╫п╬ я│п╬п╣п╢п╦п╫п╣п╫п╦п╣ я│п╬ spread");
                 Sp_Connect::Disconnect();
             }
             else
@@ -138,18 +138,18 @@ int main(int argc, char *argv[])
                 buf[ret]='\0';
                 if(!strncmp(buf,"get",3))
                 {
-                    log("Данные запрошены");
+                    log("п■п╟п╫п╫я▀п╣ п╥п╟п©я─п╬я┬п╣п╫я▀");
                     Values::send();
                 }
                 else if(!strncmp(buf,"set",3))
                 {
-                    log("Данные получены");
+                    log("п■п╟п╫п╫я▀п╣ п©п╬п╩я┐я┤п╣п╫я▀");
                     Values::set(buf+3);
                 }
             }
         }
         usleep(1000000); // sleep 1 sec
     }
-    cout<<"Система управления конфигурацией kgm_conf завершена"<<endl;
+    cout<<"п║п╦я│я┌п╣п╪п╟ я┐п©я─п╟п╡п╩п╣п╫п╦я▐ п╨п╬п╫я└п╦пЁя┐я─п╟я├п╦п╣п╧ kgm_conf п╥п╟п╡п╣я─я┬п╣п╫п╟"<<endl;
     return 0;
 }
