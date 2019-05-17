@@ -16,7 +16,7 @@ int Values::loadFromFile(const char * filename)
     Values::filename = filename;
     std::ifstream file(filename);
     if (!file) {
-        throw std::runtime_error("Ошибка чтения файла");
+        throw std::runtime_error("п·я┬п╦п╠п╨п╟ я┤я┌п╣п╫п╦я▐ я└п╟п╧п╩п╟");
     }
 
     int num = 0;
@@ -69,7 +69,7 @@ int Values::saveToFile()
     std::ofstream file(filename);
     if (!file)
     {
-        throw std::runtime_error("Ошибка записи в файл");
+        throw std::runtime_error("п·я┬п╦п╠п╨п╟ п╥п╟п©п╦я│п╦ п╡ я└п╟п╧п╩");
     }
     file << "[scaleparkvelocities]\n";
     for (std::map<int,double>::iterator it = dictionary.begin(); it != dictionary.end(); ++it)
