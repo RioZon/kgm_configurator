@@ -4,15 +4,15 @@
 #include <sp.h>
 
 /**
-* \brief Предоставляет интерфейс работы с соединением spread.
+* \brief п÷я─п╣п╢п╬я│я┌п╟п╡п╩я▐п╣я┌ п╦п╫я┌п╣я─я└п╣п╧я│ я─п╟п╠п╬я┌я▀ я│ я│п╬п╣п╢п╦п╫п╣п╫п╦п╣п╪ spread.
 **/
 class Sp_Connect
 {
 public:
     static int Connect(const char *param_con="4803");
     static int Disconnect();
-    static mailbox id;  ///< Идентификатор соединения со сприд.
-    static char priv_gr[MAX_GROUP_NAME];  ///< Имя приватной группы.
+    static mailbox id;  ///< п≤п╢п╣п╫я┌п╦я└п╦п╨п╟я┌п╬я─ я│п╬п╣п╢п╦п╫п╣п╫п╦я▐ я│п╬ я│п©я─п╦п╢.
+    static char priv_gr[MAX_GROUP_NAME];  ///< п≤п╪я▐ п©я─п╦п╡п╟я┌п╫п╬п╧ пЁя─я┐п©п©я▀.
 };
 
 #endif // SP_CONNECT_H
