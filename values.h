@@ -7,9 +7,9 @@
 class Values
 {
 public:
-    static int loadFromFile(const char *filename); // прочесть из файла
-    static int send(); // отправить в АРМ ШНСГ
-    static int set(const char *buf);  // сохранить из посылки АРМа в файл
+    static int loadFromFile(const char *filename); // п©я─п╬я┤п╣я│я┌я▄ п╦п╥ я└п╟п╧п╩п╟
+    static int send(); // п╬я┌п©я─п╟п╡п╦я┌я▄ п╡ п░п═п° п╗п²п║п⌠
+    static int set(const char *buf);  // я│п╬я┘я─п╟п╫п╦я┌я▄ п╦п╥ п©п╬я│я▀п╩п╨п╦ п░п═п°п╟ п╡ я└п╟п╧п╩
 
 private:
     static std::map<int,double> dictionary;
